@@ -1,25 +1,20 @@
 #include <iostream>
 
 class MyClass {
-  public:
-    static int staticVar;
-    static void f() {
-      std::cout << "static func" << std::endl;
-    }
+  private:
+    int a;
+    friend void f(MyClass& ref);
 };
 
-int MyClass::staticVar;
+
+void f(MyClass& ref) {
+  std::cout << ref.a << std::endl;
+}
 
 
 int main() {
-  MyClass::staticVar = 10;
-
   MyClass obj;
-  std::cout << "static var" << std::endl;
-
-  MyClass::f();
-  obj.f();
-
+  f(obj);
 
   return 0;
 }
