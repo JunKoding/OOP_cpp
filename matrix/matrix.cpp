@@ -8,11 +8,10 @@ using namespace std;
 class Matrix {
   private:
     double m[2][2]; // 2 * 2 행렬
-    //const double m_arr[]; // 행렬 값으로 들어갈 double 배열
 
   public:
     Matrix(); // 기본 생성자
-    Matrix(const double m_arr[]); // 생성자
+    Matrix(const double arr[]); // 생성자
     ~Matrix(); // 소멸자
 
     Matrix operator+(const Matrix& a); // 행렬의 합
@@ -29,12 +28,12 @@ Matrix::Matrix() {
 }
 
 
-Matrix::Matrix(const double m_arr[]) {
+Matrix::Matrix(const double arr[]) {
   // 초기화
-  m[0][0] = m_arr[0];
-  m[0][1] = m_arr[1];
-  m[1][0] = m_arr[2];
-  m[1][1] = m_arr[3];
+  m[0][0] = arr[0];
+  m[0][1] = arr[1];
+  m[1][0] = arr[2];
+  m[1][1] = arr[3];
 }
 
 
