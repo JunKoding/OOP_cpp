@@ -1,25 +1,14 @@
 #include <iostream>
 
 
-class Parent {
-  public:
-    int c;
-    Parent() : c(1) {};
-};
-
-
-class Child : public Parent {
-  public:
-    int c;
-    Child() : c(2) {};
-};
-
-
 int main() {
-  Child c = Child();
-  Parent& p = c;
+  auto l = [](int a = 30) {
+    std::cout << a << std::endl;
+  };
 
-  std::cout << sizeof(c) << std::endl; // 8
-  std::cout << c.c << std::endl; // 2
-  std::cout << p.c << std::endl; // 1
+  l();
+  int a = 3000;
+  l(a);
+
+  return 0;
 }
