@@ -1,5 +1,5 @@
 #include <iostream>
 
 int main() {
-  std::cout << "seony" << std::endl;
+  enum Color {red, vblu}
 }

@@ -1,41 +1,25 @@
 #include <iostream>
 
 
-using namespace std;
-
-
-class Matrix {
+class Parent {
   public:
-    Matrix() {}
+    int c;
+    Parent() : c(1) {};
+};
 
-    Matrix(const Matrix& a) {
-      cout << "copy constructor" << endl;
-    }
 
-    Matrix(Matrix&& a) {
-      cout << "move constructor" << endl;
-    }
-
-    Matrix& operator=(const Matrix& b) {
-      cout << "copy assignment operator" << endl;
-      return* this;
-    }
-
-    Matrix& operator=(Matrix&& b) {
-      cout << "move assingment operator" << endl;
-      return* this;
-    }
+class Child : public Parent {
+  public:
+    int c;
+    Child() : c(2) {};
 };
 
 
 int main() {
-  Matrix x;
-  Matrix y = x;
-  Matrix z = std::move(x);
+  Child c = Child();
+  Parent& p = c;
 
-  Matrix a, b ,c;
-  b = a;
-  c = std::move(a);
-
-  return 0;
+  std::cout << sizeof(c) << std::endl; // 8
+  std::cout << c.c << std::endl; // 2
+  std::cout << p.c << std::endl; // 1
 }
