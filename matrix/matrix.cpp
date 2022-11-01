@@ -17,7 +17,11 @@ class Matrix {
     Matrix operator+(const Matrix& a); // 행렬의 합
     Matrix operator-(const Matrix& a); // 행렬의 차
     Matrix operator*(const Matrix& a); // 행렬의 곱
-    Matrix operator=(const Matrix& a); // 행렬의 =
+    //Matrix operator=(const Matrix& a); // 행렬의 =
+
+    Matrix& operator+=(const Matrix& a);
+    Matrix& operator-=(const Matrix& a);
+    Matrix& operator*=(const Matrix& a);
 
     explicit operator bool() const;// 명시적으로 bool type으로 변환
 };
@@ -80,13 +84,47 @@ Matrix Matrix::operator*(const Matrix& a) {
   return b;
 }
 
-
+/*
 Matrix Matrix::operator=(const Matrix& a) {
   for(int i = 0; i<2; i++) {
     for(int j = 0; j<2; j++) {
       m[i][j] = a.m[i][j]; // 복사
     }
   }
+  return 0;
+}
+*/
+
+Matrix& Matrix::operator+=(const Matrix& a) {
+  for(int i = 0; i<2; i++) {
+    for(int j = 0; j<2; j++) {
+      m[i][j] = m[i][j] + a.m[i][j];
+    }
+  }
+
+  return *this;
+}
+
+
+Matrix& Matrix::operator-=(const Matrix& a) {
+  for(int i = 0; i<2; i++) {
+    for(int j = 0; j<2; j++) {
+      m[i][j] = m[i][j] - a.m[i][j];
+    }
+  }
+
+  return *this;
+}
+
+
+Matrix& Matrix::operator*=(const Matrix& a) {
+  for(int i = 0; i<2; i++) {
+    for(int j = 0; j<2; j++) {
+      m[i][j] = m[i][j] * a.m[i][j];
+    }
+  }
+
+  return *this;
 }
 
 
