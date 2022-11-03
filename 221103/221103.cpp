@@ -111,3 +111,117 @@ int main() {
   cout << s << "\n";
 }
 */
+
+// 비교
+/*
+int main() {
+  string s = "test";
+  cout << s.compare("abc") << "\n";
+  cout << s.compare("test") << "\n";
+  cout << s.compare("xyz") << "\n";
+}
+*/
+
+// 글자 반환
+/*
+int main() {
+  string s = "test";
+
+  cout << s[1] << "\n";
+  cout << s.at(1) << "\n";
+  s[1] = 'a';
+  s.at(2) = 'b';
+  cout << s.substr(1, 2) << "\n";
+  cout << s.substr(1) << "\n";
+}
+*/
+
+// exception
+/*
+int main() {
+  string s = "test";
+
+  try {
+    //cout << s[5];
+    cout << s.at(5);
+  }
+  catch(...) {
+    cout << "catch\n";
+  }
+}
+*/
+
+// for 범위기반
+/*
+int main() {
+  string s = "test";
+
+  for(const char& c : s) {
+    cout << "[" << c << "]\n";
+  }
+}
+*/
+
+// find
+/*
+int main() {
+  string s = "hello world";
+
+  cout << s.find("ll") << "\n";
+  cout << s.find('w') << "\n";
+  cout << (s.find("hello", 5) == string::npos) << "\n";
+  cout << (s.find('w', 7) == string::npos) << "\n";
+}
+*/
+
+
+// rfind
+/*
+int main() {
+  string s = "hello world";
+
+  cout << (s.rfind("11", 0) == string::npos) << "\n";
+  cout << (s.rfind("11", 7) == string::npos) << "\n";
+}
+*/
+
+
+// stoi, to_string
+/*
+int main() {
+  string s("10");
+
+  int i = stoi(s);
+  double d = stod(s);
+  cout << i << "\n";
+  cout << d << "\n";
+
+  string s2 = to_string(i);
+  string s3 = to_string(d);
+  cout << s2 << "\n";
+  cout << s3 << "\n";
+}
+*/
+
+
+// 읽기
+/**/
+int main() {
+  string s;
+
+/*
+  cin >> s;
+  cout << "[" << s << "]\n";
+  // hellow world 입력시 [hello]
+*/
+
+/*
+  getline(cin, s);
+  cout << "[" << s << "]\n";
+  // hellow world 입력시 [hello world]
+*/
+
+  getline(cin, s, ' ');
+  cout << "[" << s << "]\n";
+  // hellow world 입력시 [hello]
+}
