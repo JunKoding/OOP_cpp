@@ -45,9 +45,33 @@ int main() {
   cout << "=====v6=====" << endl;
 
   vector<int> v7 = {1, 2, 3};
-  for(vector<int>::const_iterator it = v7.cbegin(); it != v7.cend(); ++it) {
+  for(vector<int>::const_iterator it = v7.cbegin(); it != v7.cend(); it++) {
     cout << *it << endl;
   }
   cout << "=====v7=====" << endl;
 
+  vector<int> v8 = {1, 2, 3};
+  v8.insert(v8.begin(), 4); // iterator 위치에 원소 추가
+  v8.erase(v8.begin() +2); // iterator 위치에 원소 삭제
+  for(const auto& element : v8) {
+    cout << element << endl;
+  }
+  cout << "=====v8=====" << endl;
+
+  vector<int> v9;
+  vector<int> v10 = {1, 2, 3};
+  v9.swap(v10); // container 내용 교체
+  for(const auto& element : v9) {
+    cout << element << endl;
+  }
+  cout << "=====v9,v10-=====" << endl;
+
+  vector<int> v11;
+  v11.push_back(1);
+  v11.push_back(2);
+  v11.push_back(3);
+  v11.push_back(4);
+  v11.push_back(5);
+  cout << v11.size() << " " << v11.capacity() << endl; // size는 원소개수, capacity는 미리 동적할당한 개수
+  cout << "=====v11-=====" << endl;
 }
