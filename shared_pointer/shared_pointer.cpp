@@ -8,7 +8,7 @@ struct Person {
     const char* name;
 };
 
-
+template<typename T>
 class SP {
 private:
     class RC {
@@ -28,12 +28,12 @@ private:
         }
     };
 
-    Person* ptr;  // raw pointer
+    T* ptr;  // raw pointer
     RC* reference;
 
 public:
     SP();
-    SP(Person* ptr);
+    SP(T* ptr);
     SP(const SP& a);
     SP(SP&& a);
     ~SP();
@@ -41,35 +41,40 @@ public:
     SP& operator=(const SP& a);
     SP& operator=(SP&& a);
 
-    Person& operator*() const;
-    Person* operator->() const;
+    T& operator*() const;
+    T* operator->() const;
 };
 
 
-SP::SP() : ptr{ nullptr }, reference(nullptr) {
+template<typename T>
+SP<T>::SP() : ptr{ nullptr }, reference(nullptr) {
 
 }
 
 
-SP::SP(Person* ptr) : ptr{ ptr }, reference(new RC) {
+template<typename T>
+SP<T>::SP(T* ptr) : ptr{ ptr }, reference(new RC) {
     cout << "ctor\n";
 }
 
 
-SP::SP(const SP& a) : ptr{ a.ptr }, reference(a.reference) {
+template<typename T>
+SP<T>::SP(const SP& a) : ptr{ a.ptr }, reference(a.reference) {
     reference->AddRef();
     cout << "copy ctor\n";
 }
 
 
-SP::SP(SP&& a) : ptr{ a.ptr }, reference(a.reference) {
+template<typename T>
+SP<T>::SP(SP&& a) : ptr{ a.ptr }, reference(a.reference) {
     a.ptr = nullptr;
     a.reference = nullptr;
     cout << "move ctor\n";
 }
 
 
-SP::~SP() {
+template<typename T>
+SP<T>::~SP() {
     if (reference != nullptr && reference->Release() == 0) {
         delete ptr;
         cout << "deleted\n";
@@ -77,7 +82,8 @@ SP::~SP() {
 }
 
 
-SP& SP::operator=(const SP& a) {
+template<typename T>
+SP<T>& SP<T>::operator=(const SP& a) {
     // 기존 것을 놓는다.
     if (reference != nullptr && reference->Release() == 0) {
         delete ptr;
@@ -95,7 +101,8 @@ SP& SP::operator=(const SP& a) {
 }
 
 
-SP& SP::operator=(SP&& a) {
+template<typename T>
+SP<T>& SP<T>::operator=(SP&& a) {
     // 기존 것을 놓는다.
     if (reference != nullptr && reference->Release() == 0) {
         delete ptr;
@@ -113,12 +120,14 @@ SP& SP::operator=(SP&& a) {
 }
 
 
-Person& SP::operator*() const {
+template<typename T>
+T& SP<T>::operator*() const {
     return *ptr;
 }
 
 
-Person* SP::operator->() const {
+template<typename T>
+T* SP<T>::operator->() const {
     return ptr;
 }
 
