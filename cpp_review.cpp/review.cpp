@@ -1,94 +1,44 @@
+#include <string>
 #include <iostream>
 
 
-//using namespace std;
-
-// exception 
-/*
-class MyException {};
-
-
-class MyClass {
-  public:
-    ~MyClass();
-};
-
-
-MyClass::~MyClass() {
-  cout << "dtor" << endl;
-}
-
-
-void g() {
-  MyClass obj;
-  throw MyException();
-}
-
-
-void f() {
-  g();
-}
+using namespace std;
 
 
 int main() {
-  try {
-    f();
+  string s1;
+  s1 = "test";
+
+  cout << s1.empty() << endl;
+  cout << s1.size() << endl;
+  cout << s1.length() << endl;
+  cout << s1.find('t') << endl;
+  
+  for (const auto& element : s1) {
+    cout << "[" << element << "]" << endl;
   }
 
-  catch(const MyException& e) {
-    cout << "Exception" << endl;
-  }
+  cout << s1.find('t') << endl;
+
+  char buf1[1024];
+  snprintf(buf1, sizeof(buf1), "%d", 100);
+  cout << buf1 << endl;
+
+  char buf2[1024];
+  snprintf(buf2, sizeof(buf2), "%d", 1000);
+  cout << buf2 << endl;
+
+  string s = "100";
+  int var;
+  var = stoi(s);
+  cout << var << endl;
+
+  int i = 500;
+  string s2;
+  s2 = to_string(i);
+  cout << s2 << endl;
+
+  string s3;
+  getline(cin, s3, ' ');
+  cout << s3 << endl;
 }
-*/
-
-
-// template
-/*
-template<typename T>
-void swap(T& a, T& b) {
-  T tmp = b;
-  b = a;
-  a = tmp;
-}
-
-
-int main() {
-  int a = 30;
-  int b = 50;
-  std::cout << "a: " << a << std::endl;
-  std::cout << "b: " << b << std::endl;
-
-  char c = 'c';
-  char d = 'd';
-  std::cout << "c: " << c << std::endl;
-  std::cout << "d: " << d << std::endl;
-
-  swap<int>(a,b);
-  std::cout << "a: " << a << std::endl;
-  std::cout << "b: " << b << std::endl;
-
-  swap<char>(c,d);
-  std::cout << "c: " << c << std::endl;
-  std::cout << "d: " << d << std::endl;
-}
-*/
-template<typename T>
-class NumberUtil {
-  public:
-    const T& bigger(const T& a, const T& b);
-};
-
-template<typename T>
-const T& NumberUtil<T>::bigger(const T& a, const T& b) {
-  return (a>=b) ? a:b;
-}
-
-
-int main() {
-  NumberUtil<int> intUtil;
-  std::cout << intUtil.bigger(10,20) << std::endl;
-
-  NumberUtil<double> doubleUtil;
-  std::cout << doubleUtil.bigger(10.5,20.5) << std::endl;
-}
-
