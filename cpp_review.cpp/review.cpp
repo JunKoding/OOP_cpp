@@ -1,63 +1,94 @@
 #include <iostream>
-#include <vector>
+#include <list>
 
 
 using namespace std;
 
-
 /*
+bool desc(const int& a, const int& b) {
+  return a > b;
+}
+
+
+bool asc(const int& a, const int& b) {
+  return a < b;
+}
+
+
 int main() {
-  vector<int> v1;
-  vector<int> v2(10);
-  vector<int> v3 = {1, 2, 3};
-  vector<int> v4 = v3;
-  
-  for(const auto& element : v4) {
-    cout << "[" << element << "]" << endl;
-  }
+  list<int> l = {5, 9, 1, 3, 3 };
+  l.sort(desc);
 
-  vector<int> v5;
-  v5.push_back(1);
-  v5.push_back(2);
-
-  for(const int& e : v5) {
+  for(const auto& e : l) {
     cout << e << endl;
   }
 
-  cout << v5.front() << endl;
-  cout << v5.back() << endl;
-  cout << v5.size() << endl;
-  //cout << v5.at(2) << endl; // std::out_of_range 반환
+  cout << "\n";
+
+  l.sort(asc);
+  for(const auto& e : l) {
+    cout << e << endl;
+  }
+
+  cout << "\n";
+
+  l.reverse();
+  for(const auto& e : l) {
+    cout << e << endl;
+  }
 }
 */
 
+/*
+int main() {
+  list<int> l = {5, 9, 1, 3, 3};
+
+  l.unique();
+  for(const auto& e : l) {
+    cout << e << endl;
+  } // 5,9,1,3
+
+  list<int> l1 = {5, 9, 1, 3, 3};
+
+  auto desc = [](const int& a, const int& b) {
+    return a < b;
+  };
+
+  l1.sort(desc);
+  for(const auto& e : l1) {
+    cout << e << endl;
+  }
+}
+*/
+
+/*
+int main() {
+  list<int> l = {5, 3, 9, 1, 3, 3};
+
+  //l.sort();
+  l.unique();
+  for(const int& e : l) {
+    cout << e << endl;
+  }
+}
+*/
 
 int main() {
-  vector<int> v1 = {1, 2, 3};
+  list<int> l1 = {5, 9, 1, 3, 3};
+  list<int> l2 = {4, 8, 2};
 
-  for(vector<int>::const_iterator it = v1.cbegin(); it != v1.cend(); it++) {
-    cout << *it << endl;
+  // l1.sort();
+  // l2.sort();
+  // l1.merge(l2);
+  // for(const auto& e : l1) {
+  //   cout << e << endl;
+  // }
+
+  list<int>::const_iterator it = l1.cend();
+  l1.splice(it, l2);
+  for(const auto& e : l1) {
+    cout << e << endl;
   }
 
-  vector<int> v2 = {1, 2, 3};
 
-  for(auto it = v2.begin(); it != v2.end(); it++) {
-    cout << *it << endl;
-  }
-
-  v2.insert(v2.begin(), 4);
-  v2.erase(v2.cbegin() +2);
-
-  for(vector<int>::const_iterator it = v2.cbegin(); it != v2.cend(); it++) {
-    cout << *it << endl;
-  }
-
-  vector<int> v3;
-  v3.push_back(1);
-  v3.push_back(2);
-  v3.push_back(3);
-  v3.push_back(4);
-  v3.push_back(5);
-
-  cout << v3.size() << ' ' << v3.capacity() << endl;
 }
