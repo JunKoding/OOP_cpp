@@ -1,94 +1,92 @@
+#include <deque>
+#include <map>
 #include <iostream>
-#include <list>
+#include <utility>
 
 
 using namespace std;
 
-/*
-bool desc(const int& a, const int& b) {
-  return a > b;
-}
-
-
-bool asc(const int& a, const int& b) {
-  return a < b;
-}
-
 
 int main() {
-  list<int> l = {5, 9, 1, 3, 3 };
-  l.sort(desc);
+  /*
+  deque<int> d1;
+  deque<int> d2(10);
+  deque<int> d3 = {1, 2, 3};
+  deque<int> d4 = d3;
 
-  for(const auto& e : l) {
+  for(const auto& e : d4) {
     cout << e << endl;
   }
 
-  cout << "\n";
-
-  l.sort(asc);
-  for(const auto& e : l) {
-    cout << e << endl;
+  for(deque<int>::const_iterator it = d4.cbegin(); it != d4.cend(); it++) {
+    cout << *it << endl;
   }
+  */
 
-  cout << "\n";
+ /*
+ typedef pair<string, int> CityDistance;
+ CityDistance p = {"Pusan", 325};
 
-  l.reverse();
-  for(const auto& e : l) {
-    cout << e << endl;
-  }
-}
-*/
+ cout << p.first << endl;
+ cout << p.second << endl;
+ */
 
-/*
-int main() {
-  list<int> l = {5, 9, 1, 3, 3};
+  // map<string, int> m;
+  // auto p = m.insert(make_pair("jun", 26));
 
-  l.unique();
-  for(const auto& e : l) {
-    cout << e << endl;
-  } // 5,9,1,3
-
-  list<int> l1 = {5, 9, 1, 3, 3};
-
-  auto desc = [](const int& a, const int& b) {
-    return a < b;
-  };
-
-  l1.sort(desc);
-  for(const auto& e : l1) {
-    cout << e << endl;
-  }
-}
-*/
-
-/*
-int main() {
-  list<int> l = {5, 3, 9, 1, 3, 3};
-
-  //l.sort();
-  l.unique();
-  for(const int& e : l) {
-    cout << e << endl;
-  }
-}
-*/
-
-int main() {
-  list<int> l1 = {5, 9, 1, 3, 3};
-  list<int> l2 = {4, 8, 2};
-
-  // l1.sort();
-  // l2.sort();
-  // l1.merge(l2);
-  // for(const auto& e : l1) {
-  //   cout << e << endl;
+  // if(p.second) {
+  //   cout << "successful\n";
+  // } else {
+  //   cout << "failed\n";
   // }
 
-  list<int>::const_iterator it = l1.cend();
-  l1.splice(it, l2);
-  for(const auto& e : l1) {
-    cout << e << endl;
+  // p = m.emplace("seony", 21);
+
+  // if(p.second) {
+  //   cout << "successful\n";
+  // } else {
+  //   cout << "failed\n";
+  // }
+
+  // map<string, int> m = {
+  //   {"Busan", 325},
+  //   {"Incheon", 55}
+  // };
+
+  // map<string, int>::const_iterator it = m.find("Busan");
+  
+  // map<string, int> m = {
+  //   {"Busan", 325},
+  //   {"Incheon", 55}
+  // };
+  
+  // map<string, int>::const_iterator it = m.find("Busan");
+
+  // if(it != m.end()) {
+  //   cout << it->first << endl;
+  //   cout << it->second << endl;
+  // }
+
+  // it = m.find("Jeju");
+  // if(it == m.end()) {
+  //   cout << "not found\n";
+  // }
+
+  map<string,int> m = {
+    {"a", 1},
+    {"b", 2},
+    {"c", 3}
+  };
+
+  for(map<string,int>::const_iterator it = m.cbegin(); it != m.cend(); it++) {
+    cout << it->first << endl;
+    cout << it->second << endl;
   }
 
+  for(map<string,int>::value_type& p : m) {
+    cout << p.first << endl;
+    cout << p.second << endl;
+  }
 
+  
 }
