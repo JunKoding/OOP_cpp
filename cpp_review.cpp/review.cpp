@@ -87,6 +87,4 @@ int main() {
     cout << p.first << endl;
     cout << p.second << endl;
   }
-
-  
 }

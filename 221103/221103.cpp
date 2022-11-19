@@ -223,5 +223,6 @@ int main() {
 
   getline(cin, s, ' ');
   cout << "[" << s << "]\n";
-  // hellow world 입력시 [hello]
+  // hellow 엔터 world mju 입력시 [hello
+  // world]
 }
