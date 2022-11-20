@@ -8,12 +8,13 @@ using namespace std;
 
 int main() {
   string s; // 문자열
-  int count = 0; // 단어 개수 초기화
-  vector<int> counter; // 개수 저장할 vector
+  vector<string> v; // 문자를 저장할 vector
 
   while(getline(cin, s)) {
-    cout << s << endl;
-  } // 문자열 입력
+    v.insert(v.cbegin(), s);
+  }
 
-
-} 
+  for(vector<string>::const_iterator it = v.cbegin(); it != v.cend(); it++) {
+    cout << *it << endl;
+  }
+}
