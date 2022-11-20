@@ -1,3 +1,4 @@
+/*문자열 입력시 단어 개수 세기 - 중복 못거름*/
 #include <iostream>
 #include <string>
 

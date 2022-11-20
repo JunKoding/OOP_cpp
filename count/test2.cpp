@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -8,22 +7,25 @@ using namespace std;
 
 
 int main() {
-  string s1, s2;
+  string s;
   vector<string> v;
+  int count = 0;
 
-  getline(cin, s1);
-  getline(cin, s2);
-  
-  v.push_back(s1);
-  v.push_back(s2);
+  while(getline(cin, s)) {
+    for(int i = 0; i<s.size(); i++) {
+      if(s[i] == ' ') {
+        count ++;
+      }
+    }
 
-  for(int i = 0; i<v.size(); i++) {
-    cout << v[i] << endl;
+    v.push_back(s);
   }
 
-  sort(v.begin(), v.end());
-
   for(int i = 0; i<v.size(); i++) {
-    cout << v[i] << endl;
+    count ++;
   }
+
+  cout << "\n" << endl;
+
+  cout << count << endl;
 }
