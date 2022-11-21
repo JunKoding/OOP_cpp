@@ -27,8 +27,32 @@ int main() {
     }
   }
 
-  for(int i = 0; i<v.size(); i++) {
-    count ++; // 단어 개수 세기
+  // cout << "===========소문자로============" << endl;
+
+  // for(int i = 0; i<v.size(); i++) {
+  //   cout << v[i] << endl;
+  // }
+
+  // cout << "==========출력=============" << endl;
+  
+  sort(v.begin(), v.end()); // 알파벳순으로 정렬
+
+  // for(int i = 0; i<v.size(); i++) {
+  //   cout << v[i] << endl;
+  // }
+
+  // cout << "==========정렬===========" << endl;
+
+  v.erase(unique(v.begin(), v.end()), v.end()); // 중복 제거
+
+  // for(int i = 0; i<v.size(); i++) {
+  //   cout << v[i] << endl;
+  // }
+  
+  //cout << "==========중복제거=============" << endl;
+
+  for(const auto& e : v) {
+    count ++;
   }
 
   cout << count << endl;
