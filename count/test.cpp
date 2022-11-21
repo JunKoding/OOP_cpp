@@ -1,40 +1,35 @@
 #include <iostream>
+#include <string>
 #include <vector>
-#include <algorithm>
-using namespace std;
- 
+
+
 int main() {
-	vector<int> v;
- 
-	v.push_back(1);
-	v.push_back(1);
-	v.push_back(2);
-	v.push_back(3);
-	v.push_back(4);
-	v.push_back(2);
-	v.push_back(1);
-	v.push_back(5);
- 
-	cout << "Original Vector: ";
-	for (int i = 0; i < v.size(); i++) {
-		cout << v[i] << " ";
-	}
-	cout << "\n\n";
- 
-	sort(v.begin(), v.end());
- 
-	cout << "Sorted Vector: ";
-	for (int i = 0; i < v.size(); i++) {
-		cout << v[i] << " ";
-	}
-	cout << "\n\n";
- 
-	v.erase(unique(v.begin(), v.end()), v.end());
- 
-	cout << "unique + erase: ";
-	for (int i = 0; i < v.size(); i++) {
-		cout << v[i] << " ";
-	}
-	cout << "\n\n";
- 
+
+    std::string str;
+    std::string separator = " ";
+    int cur_position = 0;
+    int position;
+    std::vector<std::string> v;
+    int count = 0;
+
+    getline(std::cin, str);
+
+    while ((position = str.find(separator, cur_position)) != std::string::npos) {
+        int len = position - cur_position;
+        std::string result = str.substr(cur_position, len);
+        //std::cout << result << std::endl;
+        cur_position = position + 1;
+
+        v.push_back(result);
+    }
+
+    std::string result = str.substr(cur_position);
+    v.push_back(result);
+
+    for(const auto& e : v) {
+      std::cout << e << std::endl;
+      count ++;
+    }
+
+    std::cout << count << std::endl;
 }
