@@ -1,27 +1,26 @@
 #include <algorithm>
 #include <iostream>
-#include <string>
-#include <vector>
 #include <map>
+#include <string>
 
 
 using namespace std;
 
 
 int main() {
-  string s; // 문자열
-  vector<string> v; 
+  int num = 0;
+  string s;
+  map<string, int> m;
 
   while(cin >> s) {
     for(int i = 0; i<s.size(); i++) {
       s[i] = tolower(s[i]);
-      // 모두 소문자로 변환
     }
 
-    v.push_back(s);
+    m[s] = num;
   }
-  
-  for(const auto& e : v) {
-    cout << e << endl;
+
+  for(map<string, int>::const_iterator it = m.cbegin(); it != m.cend(); it++) {
+    cout << it->first << " " << it->second << endl;
   }
 }
