@@ -1,22 +1,52 @@
-#include <iostream>
 #include <map>
-#include <string>
-
+#include<sstream>
+#include<iostream>
 
 using namespace std;
 
+void wordsCount(string str){
 
-int main() {
-  int i = 1;
-  string s;
-  map<string, int> m;
+      int count = 1;
+      //key value pair map
+      //key = word, value = count
+      std::map<string,int> wordsMap;
 
-  while(cin >> s) {
-    m[s] = i;
-  }
+      //extract words and push in map
+      istringstream wordStream(str);
 
-  for(map<string, int>::const_iterator it = m.cbegin(); it != m.end(); it++) {
-    cout << it->first << endl;
-    cout << it->second << endl;
-  }
+      string word;
+      //Extract each words and add to map
+      //if it does not exist in map
+       while(wordStream >> word){
+             //create a pair of map and bool
+            // pair<map<string,int>::iterator,bool> retrunValue;
+             auto retrunValue = wordsMap.insert(pair<string,int>(word,count));
+
+             //insert element
+            //retrunValue = wordsMap.insert( pair<string,int>(word,count));
+
+            //Check if map contains value
+            if (retrunValue.second==false)
+            {
+                  //Element already exists
+                  ++retrunValue.first->second; 
+            }     
+       }//while
+
+       //Iterate elements and print words 
+       map<string,int>::iterator itr ;
+
+       for (itr = wordsMap.begin(); itr != wordsMap.end(); ++itr){
+
+               cout << '\t' << itr->first ;
+               cout<< '\t' << itr->second << '\n';
+       }
+}
+
+int main(){
+
+      wordsCount("hello world !!! hello world !!! good day");    
+
+      return 0;
+
 }
