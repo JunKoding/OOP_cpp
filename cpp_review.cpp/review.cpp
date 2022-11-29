@@ -1,27 +1,44 @@
+#include <fstream>
 #include <iostream>
-#include <memory>
 #include <string>
 
 
 using namespace std;
 
 
-struct MyClass {
-  shared_ptr<MyClass> target;
-};
-
-
 int main() {
-  auto log = [](MyClass* arg) {
-    cout << "delete\n";
-    delete arg;
-  };
+// ofstream	
+/*
+	ofstream ofs("output2.txt", ios::app);
 
-  shared_ptr<MyClass> obj1{new MyClass, log};
-  shared_ptr<MyClass> obj2{new MyClass, log};
+	ofs << "Hello world!!\n";
+	
 
-  obj1->target = obj2;
-  obj2->target = obj1;
+	ofstream ofs("c://output.txt", ios::app);
 
-  obj1->target.reset();
+	if(!ofs) {
+		cout << "Error!\n";
+	} else {
+		ofs << "Hello world\n";
+	} // Error
+*/
+	ofstream ofs("output.txt", ios::app);
+
+	ofs << "\n";
+
+// ifstream
+/*
+	ifstream ifs("output2.txt");
+
+	string first, second;
+
+	ifs >> first  >> second;
+	cout << first << endl << second << endl;
+*/
+
+	ifstream ifs("output.txt", ios::binary);
+
+	char c;
+	ifs.get(c);
+	cout << showbase << hex << (int) c << endl;
 }
