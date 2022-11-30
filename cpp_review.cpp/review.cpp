@@ -1,44 +1,27 @@
-#include <fstream>
+#include <algorithm>
 #include <iostream>
-#include <string>
 
 
 using namespace std;
 
 
+class Double {
+  public:
+    int operator()(int i) {
+      return i * 2;
+    };
+}; // functor
+
+
 int main() {
-// ofstream	
-/*
-	ofstream ofs("output2.txt", ios::app);
+  void (*fn)(int arg); // function pointer
 
-	ofs << "Hello world!!\n";
-	
+  fn = [](int arg) {
+    cout << arg << endl;
+  }; // lambda
 
-	ofstream ofs("c://output.txt", ios::app);
+  fn(100);
 
-	if(!ofs) {
-		cout << "Error!\n";
-	} else {
-		ofs << "Hello world\n";
-	} // Error
-*/
-	ofstream ofs("output.txt", ios::app);
-
-	ofs << "\n";
-
-// ifstream
-/*
-	ifstream ifs("output2.txt");
-
-	string first, second;
-
-	ifs >> first  >> second;
-	cout << first << endl << second << endl;
-*/
-
-	ifstream ifs("output.txt", ios::binary);
-
-	char c;
-	ifs.get(c);
-	cout << showbase << hex << (int) c << endl;
+  Double f; // functor
+  cout << f(100) << endl;
 }
