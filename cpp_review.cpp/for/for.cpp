@@ -18,7 +18,8 @@ int main() {
     if(ref == '\0') {
       break;
     } else {
-      ref = ref - 'a' + 'A';
+      //ref = ref - 'a' + 'A';
+      ref += 'A' - 'a';
     }
   } // 대문자로 바꾸기
 
