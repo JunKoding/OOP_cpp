@@ -16,4 +16,8 @@ int main() {
   cout << p2.first << endl;
   cout << p2.second << endl;
 
+  typedef pair<string,int> nameAge;
+  nameAge na = {"jun", 26};
+
+  cout << na.first << " " << na.second << endl;
 }
