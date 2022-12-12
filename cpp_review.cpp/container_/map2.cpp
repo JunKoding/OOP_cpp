@@ -12,13 +12,8 @@ int main() {
     {"Seony", 21}
   };
 
-  auto p = m.insert(make_pair("A", 1));
+  map<string,int>::const_iterator it = m.find("Jun");
 
-  cout << m["A"] << endl;
-
-  auto p1 = m.emplace("B", 2);
-
-  cout << m["B"] << endl;
-
-  cout << m["C"] << endl;
+  cout << it->first << endl;
+  cout << it->second << endl;
 }
